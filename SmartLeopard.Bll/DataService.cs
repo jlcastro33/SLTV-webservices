@@ -8,7 +8,7 @@ namespace SmartLeopard.Bll
 { 
     public abstract class DataService<TEntity> where TEntity : IEntity
     {
-        private IRepository<TEntity> Repository { get; }
+        protected IRepository<TEntity> Repository { get; }
 
         public DataService(IRepository<TEntity> repository)
         {
@@ -17,7 +17,12 @@ namespace SmartLeopard.Bll
 
         public virtual async Task<TEntity> AddAsync(TEntity entityToAdd)
         {
+            if (entityToAdd.Id > 0)
+                return entityToAdd;
             var entityToReturn = Repository.Add(entityToAdd);
+            entityToAdd.Created = DateTime.Now;
+            entityToAdd.Updated = DateTime.Now;
+
             await Repository.SaveChangesAsync();
             return entityToReturn;
         }
@@ -35,6 +40,7 @@ namespace SmartLeopard.Bll
         public virtual async Task<TEntity> UpdateAsync(TEntity entityToUpdate)
         {
             var entityDb = await Repository.GetAsync(entityToUpdate.Id);
+            entityDb.Updated = DateTime.Now;
             await Repository.SaveChangesAsync();
             return entityDb;
         }
