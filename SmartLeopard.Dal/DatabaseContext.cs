@@ -25,6 +25,7 @@ namespace SmartLeopard.Dal
 
         public DbSet<Device> Devices { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Trace> Tracing{ get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

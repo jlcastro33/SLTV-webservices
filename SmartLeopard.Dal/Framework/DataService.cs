@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using SmartLeopard.Dal.Framework;
 
-namespace SmartLeopard.Bll
+namespace SmartLeopard.Dal.Framework
 { 
-    public abstract class DataService<TEntity> where TEntity : IEntity
+    public class DataService<TEntity> : IDataService<TEntity> where TEntity : IEntity
     {
         protected IRepository<TEntity> Repository { get; }
 

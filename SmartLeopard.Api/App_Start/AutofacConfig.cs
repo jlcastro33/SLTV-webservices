@@ -7,6 +7,8 @@ using System.Web;
 using System.Web.Mvc;
 using Autofac;
 using Autofac.Integration.Mvc;
+using NLog;
+using SmartLeopard.Api.Framework;
 using SmartLeopard.Bll;
 using SmartLeopard.Dal;
 using SmartLeopard.Bll.Services;
@@ -54,9 +56,27 @@ namespace SmartLeopard.Api.App_Start
         private static void RegisterSmartLeopard(this ContainerBuilder builder)
         {
             builder.RegisterType<DatabaseContext>().InstancePerRequest();
-            builder.RegisterGeneric(typeof(Repository<>)).As(typeof(IRepository<>)).InstancePerRequest();
+         //   builder.RegisterGeneric(typeof(Repository<>)).As(typeof(IRepository<>)).InstancePerRequest();
             builder.RegisterAssemblyTypes(typeof(Repository<>).Assembly).AsClosedTypesOf(typeof(IRepository<>)).InstancePerRequest();
             builder.RegisterAssemblyTypes(typeof(DataService<>).Assembly).AsClosedTypesOf(typeof(DataService<>)).InstancePerRequest();
+
+            //builder.RegisterType<NLogger>().As<ILog>().WithParameter((info, context) => info.ParameterType == typeof(string) && info.Name == "currentClassName",
+            //    (info, context) =>
+            //    {
+            //        var sd = context;
+            //        return "";
+            //    });
+
+            builder.RegisterType<Logger>().As<ILogger>().InstancePerRequest();
+
+
+            builder.RegisterType<UnhandledExceptionFilterAttribute>().AsSelf();
+            builder.RegisterType<TracingHandler>().AsSelf();
+
+
+            //kernel.Bind<ILog>().To<NLogger>().WithConstructorArgument("currentClassName", x => x.Request.ParentContext?.Request.Service.FullName);
+            //kernel.Bind<UnhandledExceptionFilterAttribute>().ToSelf();
+            //kernel.Bind<TracingHandler>().ToSelf();
         }
 
     }

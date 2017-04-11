@@ -7,8 +7,7 @@ namespace SmartLeopard.Dal.Framework
     {
         [Key]
         public int Id { get; set; }
-
-        public bool Disabled { get; set; }
+         
         public DateTime Created { get; set; }
         public DateTime Updated { get; set; }
 

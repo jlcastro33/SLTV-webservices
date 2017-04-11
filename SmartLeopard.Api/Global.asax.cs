@@ -15,13 +15,20 @@ namespace SmartLeopard.Api
     {
         protected void Application_Start()
         {
-            AutofacConfig.Register();
+        //    AutofacConfig.Register();
 
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
-            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
-            RouteConfig.RegisterRoutes(RouteTable.Routes);
-            BundleConfig.RegisterBundles(BundleTable.Bundles);
+            RouteTable.Routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+
+            RouteTable.Routes.MapRoute(
+                name: "Default",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+            );
+            //     FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+            //  RouteConfig.RegisterRoutes(RouteTable.Routes);
+            //   BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
     }
 }

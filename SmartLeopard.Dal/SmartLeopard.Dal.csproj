@@ -60,17 +60,20 @@
     <Compile Include="DatabaseContext.cs" />
     <Compile Include="DatabaseInitializer.cs" />
     <Compile Include="Entities\Device.cs" />
+    <Compile Include="Entities\Trace.cs" />
     <Compile Include="Entities\User.cs" />
+    <Compile Include="Framework\DataService.cs" />
     <Compile Include="Framework\Entity.cs" />
+    <Compile Include="Framework\IDataService.cs" />
     <Compile Include="Framework\IEntity.cs" />
     <Compile Include="Framework\IRepository.cs" />
-    <Compile Include="Migrations\201704062004586_initial.cs" />
-    <Compile Include="Migrations\201704062004586_initial.Designer.cs">
-      <DependentUpon>201704062004586_initial.cs</DependentUpon>
+    <Compile Include="Migrations\201704101457210_Initial.cs" />
+    <Compile Include="Migrations\201704101457210_Initial.Designer.cs">
+      <DependentUpon>201704101457210_Initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201704080723506_1.cs" />
-    <Compile Include="Migrations\201704080723506_1.Designer.cs">
-      <DependentUpon>201704080723506_1.cs</DependentUpon>
+    <Compile Include="Migrations\201704101502088_tracing.cs" />
+    <Compile Include="Migrations\201704101502088_tracing.Designer.cs">
+      <DependentUpon>201704101502088_tracing.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -79,7 +82,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SmartLeopard.Models\SmartLeopard.Models.csproj">
@@ -88,14 +93,13 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201704062004586_initial.resx">
-      <DependentUpon>201704062004586_initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201704101457210_Initial.resx">
+      <DependentUpon>201704101457210_Initial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704080723506_1.resx">
-      <DependentUpon>201704080723506_1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201704101502088_tracing.resx">
+      <DependentUpon>201704101502088_tracing.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -9,22 +9,23 @@ using SmartLeopard.Bll;
 using SmartLeopard.Bll.Resources;
 using SmartLeopard.Bll.Services;
 using SmartLeopard.Dal.Entities;
+using SmartLeopard.Dal.Framework;
 using SmartLeopard.Models;
 
 namespace SmartLeopard.Api.Controllers
 { 
     public class AccountController : ApiController
     {
-        private readonly DataService<User> _userService;
+        private readonly IDataService<User> _userService;
         private readonly DeviceService _deviceService;
 
-        public AccountController(DataService<Device> deviceService, DataService<User> userService)
+        public AccountController(IDataService<Device> deviceService, IDataService<User> userService)
         {
             _userService = userService;
-            _deviceService = (DeviceService) deviceService;
+            _deviceService =  (DeviceService) deviceService;
         }
 
-        [HttpPost, Route("/registry")]
+        [HttpPost, Route("registry")]
         public async Task<IHttpActionResult> RegistryAsync(RegistryModel model)
         {
             if (!ModelState.IsValid)
@@ -37,7 +38,7 @@ namespace SmartLeopard.Api.Controllers
             return Ok();
         }
 
-        [HttpPost, Route("/login")]
+        [HttpPost, Route("login")]
         public async Task<IHttpActionResult> LoginAsync(LoginModel model)
         {
             if (!ModelState.IsValid)

@@ -1,5 +1,8 @@
 using System.Data.Common;
 using System.Data.Entity.Migrations.History;
+using System.Data.Entity.Migrations.Model;
+using System.Data.Entity.Migrations.Sql;
+using MySql.Data.Entity;
 
 namespace SmartLeopard.Dal.Migrations
 {
@@ -13,8 +16,9 @@ namespace SmartLeopard.Dal.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            SetSqlGenerator("MySql.Data.MySqlClient", new MySql.Data.Entity.MySqlMigrationSqlGenerator()); 
+            SetSqlGenerator("MySql.Data.MySqlClient", new MyOwnMySqlMigrationSqlGenerator()); 
             SetHistoryContextFactory("MySql.Data.MySqlClient", (conn, schema) => new MySqlHistoryContext(conn, schema));
+            CodeGenerator = new MySqlMigrationCodeGenerator();
         }
 
         protected override void Seed(SmartLeopard.Dal.DatabaseContext context)
@@ -33,6 +37,16 @@ namespace SmartLeopard.Dal.Migrations
             //
         }
     }
+    public class MyOwnMySqlMigrationSqlGenerator : MySqlMigrationSqlGenerator
+    {
+        protected override MigrationStatement Generate(AddForeignKeyOperation addForeignKeyOperation)
+        {
+            addForeignKeyOperation.PrincipalTable = addForeignKeyOperation.PrincipalTable.Replace("dbo.", "");
+            addForeignKeyOperation.DependentTable = addForeignKeyOperation.DependentTable.Replace("dbo.", "");
+            var ms = base.Generate(addForeignKeyOperation);
+            return ms;
+        }
+    }
     public class MySqlHistoryContext : HistoryContext
     {
         public MySqlHistoryContext(DbConnection connection, string defaultSchema) : base(connection, defaultSchema)
@@ -40,7 +54,7 @@ namespace SmartLeopard.Dal.Migrations
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
+        { 
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<HistoryRow>().Property(h => h.MigrationId)

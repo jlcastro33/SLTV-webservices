@@ -1,10 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using SmartLeopard.Dal.Framework;
 using SmartLeopard.Models.Enums;
 
 namespace SmartLeopard.Dal.Entities
 {
+
+    [Table("devices")]
     public class Device : Entity
     { 
         [Required]

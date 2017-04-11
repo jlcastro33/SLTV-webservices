@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using SmartLeopard.Dal.Framework;
 
 namespace SmartLeopard.Dal.Entities
 {
+    [Table("users")]
     public class User: Entity
     {
         [Required]

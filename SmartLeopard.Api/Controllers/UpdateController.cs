@@ -8,6 +8,7 @@ using System.Web.Http;
 using SmartLeopard.Bll;
 using SmartLeopard.Bll.Services;
 using SmartLeopard.Dal.Entities;
+using SmartLeopard.Dal.Framework;
 
 namespace SmartLeopard.Api.Controllers
 {
@@ -16,9 +17,9 @@ namespace SmartLeopard.Api.Controllers
     {
         private readonly DeviceService _deviceService;
 
-        public UpdateController (DataService<Device> deviceService)
+        public UpdateController (DeviceService deviceService)
         {
-            _deviceService = (DeviceService) deviceService;
+            _deviceService = deviceService;
         }
 
         [HttpGet]

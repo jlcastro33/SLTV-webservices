@@ -8,6 +8,7 @@ using System.Web.Http;
 using SmartLeopard.Bll;
 using SmartLeopard.Bll.Services;
 using SmartLeopard.Dal.Entities;
+using SmartLeopard.Dal.Framework;
 using SmartLeopard.Models.Enums;
 
 namespace SmartLeopard.Api.Controllers
