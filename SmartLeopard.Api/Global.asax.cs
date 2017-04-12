@@ -19,15 +19,9 @@ namespace SmartLeopard.Api
 
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
-            RouteTable.Routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-
-            RouteTable.Routes.MapRoute(
-                name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-            );
-            //     FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
-            //  RouteConfig.RegisterRoutes(RouteTable.Routes);
+         
+                 FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+              RouteConfig.RegisterRoutes(RouteTable.Routes);
             //   BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
     }

@@ -80,8 +80,8 @@ namespace SmartLeopard.Api.App_Start
             kernel.Bind(typeof(IDataService<>)).To(typeof(DataService<>)).InRequestScope();
             kernel.Bind<DeviceRepository>().ToSelf();
             kernel.Bind<DeviceService>().ToSelf();
-            
-            kernel.Bind<ILog>().To<NLogger>().WithConstructorArgument("currentClassName", x => x.Request.ParentContext?.Request.Service.FullName);
+
+            kernel.Bind<ILog>().To<NLogger>().WithConstructorArgument("currentClassName", x => x.Request.ParentContext?.Request.Service.FullName); 
             kernel.Bind<UnhandledExceptionFilterAttribute>().ToSelf();
             kernel.Bind<TracingHandler>().ToSelf(); 
         }        

@@ -14,6 +14,9 @@ namespace SmartLeopard.Api.Framework
         {
             _logger = logger;
         }
+        public UnhandledExceptionFilterAttribute()
+        { 
+        }
 
         public override Task OnExceptionAsync(HttpActionExecutedContext actionExecutedContext, CancellationToken cancellationToken)
         {
@@ -21,6 +24,6 @@ namespace SmartLeopard.Api.Framework
              
             actionExecutedContext.Response = actionExecutedContext.Request.CreateErrorResponse(HttpStatusCode.BadRequest, actionExecutedContext.Exception);
             return base.OnExceptionAsync(actionExecutedContext, cancellationToken);
-        }
+        } 
     }
 }

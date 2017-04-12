@@ -1,4 +1,7 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Collections.Specialized;
+using System.Configuration;
+using System.Threading.Tasks;
 using SmartLeopard.Dal.Entities;
 using SmartLeopard.Dal.Framework;
 using SmartLeopard.Dal.Repositories;
@@ -17,11 +20,6 @@ namespace SmartLeopard.Bll.Services
         public async Task<Device> GetAsync(string mac)
         {
             return await _repository.GetAsync(mac);
-        }
-
-        public async Task<bool> OldVersion(Device device)
-        {
-            return false;   
-        }
+        } 
     }
 }

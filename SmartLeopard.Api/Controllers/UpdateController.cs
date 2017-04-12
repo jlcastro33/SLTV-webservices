@@ -9,10 +9,16 @@ using SmartLeopard.Bll;
 using SmartLeopard.Bll.Services;
 using SmartLeopard.Dal.Entities;
 using SmartLeopard.Dal.Framework;
+using System.Configuration;
+using System.IO;
+using System.Net.Http.Headers;
+using System.Threading;
+using System.Web;
+using SmartLeopard.Api.Framework;
 
 namespace SmartLeopard.Api.Controllers
 {
-    [RoutePrefix("update")]
+    [ RoutePrefix("update")] 
     public class UpdateController : ApiController
     {
         private readonly DeviceService _deviceService;
@@ -25,23 +31,27 @@ namespace SmartLeopard.Api.Controllers
         [HttpGet]
         public async Task<IHttpActionResult > UpdateAsync(string model, string v, string mac, string lang)
         {
+            throw new NullReferenceException();
 
             var device = await _deviceService.GetAsync(mac) ?? await _deviceService.AddAsync(new Device {Model = model, FirmwareVersion = v, Language = lang, Mac = mac});
 
-            if (await _deviceService.OldVersion(device))
+            var currentVersion = ConfigurationManager.AppSettings["currentVersion"];
+
+            if (!v.Equals(currentVersion, StringComparison.OrdinalIgnoreCase))
             {
-                device.FirmwareVersion = v;
+                device.FirmwareVersion = currentVersion;
                 await _deviceService.UpdateAsync(device);
-                return await NewVersionAsync();
+                return FirmwareAsync(currentVersion);
             }
 
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        public async Task<IHttpActionResult> NewVersionAsync()
+        public IHttpActionResult FirmwareAsync(string currentVersion)
         {
-
-            throw new NotImplementedException();
-        } 
-    }
+            var fileName = HttpContext.Current.Server.MapPath($"~//Firmware//{currentVersion}.zip");
+            
+            return new FileResult(fileName, "application/zip");
+        }
+    } 
 }

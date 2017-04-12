@@ -37,7 +37,9 @@ namespace SmartLeopard.Api.Framework
             var response = await base.SendAsync(request, cancellationToken);
 
             trace.ResponseStatusCode = response.StatusCode.ToString();
-            trace.ResponseContent = JsonConvert.SerializeObject(response.Content);
+            trace.ResponseContent = (response.Content.Headers?.ContentLength ?? 0) > 1000 
+                ? $"ContentLength:{response.Content.Headers.ContentLength }" 
+                : JsonConvert.SerializeObject(response.Content);
             trace.ProcessTimeMls = Math.Round((DateTime.Now - start).TotalMilliseconds,0);
 
 

@@ -201,9 +201,9 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\HelpPage\ApiDescriptionExtensions.cs" />
     <Compile Include="Areas\HelpPage\App_Start\HelpPageConfig.cs" />
@@ -236,6 +236,7 @@
     <Compile Include="Controllers\CallhomeController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\UpdateController.cs" />
+    <Compile Include="Framework\FileResult.cs" />
     <Compile Include="Framework\ILog.cs" />
     <Compile Include="Framework\NLogger.cs" />
     <Compile Include="Framework\TracingHandler.cs" />
@@ -298,7 +299,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-    <Content Include="NLog.config" />
+    <Content Include="Firmware\SLTV1.3.zip" />
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <PropertyGroup>

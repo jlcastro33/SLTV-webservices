@@ -10,7 +10,7 @@ namespace SmartLeopard.Api.Framework
 
         public NLogger(string currentClassName)
         {
-            _logger = LogManager.GetLogger(currentClassName);
+            _logger = LogManager.GetLogger(currentClassName); 
         }                                   
 
         public void Debug(object value)

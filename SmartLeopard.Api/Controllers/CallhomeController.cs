@@ -18,9 +18,9 @@ namespace SmartLeopard.Api.Controllers
     {
         private readonly DeviceService _deviceService;
 
-        public CallhomeController(DataService<Device> deviceService)
+        public CallhomeController(DeviceService deviceService)
         {
-            _deviceService = (DeviceService) deviceService;
+            _deviceService =  deviceService;
         }
 
         [HttpGet]
