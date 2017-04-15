@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartLeopard.Client", "Smar
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartLeopard.Client.Test", "SmartLeopard.Client.Test\SmartLeopard.Client.Test.csproj", "{88E46A70-6A31-444E-8207-E7269CE56191}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartLeopard.Web", "SmartLeopard.Web\SmartLeopard.Web.csproj", "{303CB9A8-C070-4632-AE86-3FF145EA9755}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{88E46A70-6A31-444E-8207-E7269CE56191}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{88E46A70-6A31-444E-8207-E7269CE56191}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{88E46A70-6A31-444E-8207-E7269CE56191}.Release|Any CPU.Build.0 = Release|Any CPU
+		{303CB9A8-C070-4632-AE86-3FF145EA9755}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{303CB9A8-C070-4632-AE86-3FF145EA9755}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{303CB9A8-C070-4632-AE86-3FF145EA9755}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{303CB9A8-C070-4632-AE86-3FF145EA9755}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
