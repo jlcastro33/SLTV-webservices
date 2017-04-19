@@ -12,7 +12,7 @@ namespace SmartLeopard.Dal.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Mac = c.String(nullable: false, unicode: false),
+                        Mac = c.String(unicode: false),
                         Status = c.Int(nullable: false),
                         Model = c.String(unicode: false),
                         FirmwareVersion = c.String(unicode: false),
@@ -30,9 +30,26 @@ namespace SmartLeopard.Dal.Migrations
                         Name = c.String(nullable: false, unicode: false),
                         Surname = c.String(unicode: false),
                         Email = c.String(nullable: false, unicode: false),
-                        Password = c.String(unicode: false),
+                        Password = c.String(nullable: false, unicode: false),
                         ZipCode = c.String(unicode: false),
                         CountryCode = c.String(unicode: false),
+                        Created = c.DateTime(nullable: false, precision: 0),
+                        Updated = c.DateTime(nullable: false, precision: 0),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "tracing",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        EndpointWithoutParams = c.String(unicode: false),
+                        Method = c.String(unicode: false),
+                        EndpointParams = c.String(unicode: false),
+                        RequestContent = c.String(unicode: false),
+                        ResponseStatusCode = c.String(unicode: false),
+                        ResponseContent = c.String(unicode: false),
+                        ProcessTimeMls = c.Double(nullable: false),
                         Created = c.DateTime(nullable: false, precision: 0),
                         Updated = c.DateTime(nullable: false, precision: 0),
                     })
@@ -56,6 +73,7 @@ namespace SmartLeopard.Dal.Migrations
             DropIndex("UserDevice", new[] { "Device_Id" });
             DropIndex("UserDevice", new[] { "User_Id" });
             DropTable("UserDevice");
+            DropTable("tracing");
             DropTable("users");
             DropTable("devices");
         }

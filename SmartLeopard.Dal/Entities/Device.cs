@@ -9,8 +9,7 @@ namespace SmartLeopard.Dal.Entities
 
     [Table("devices")]
     public class Device : Entity
-    { 
-        [Required]
+    {  
         public string Mac { get; set; }
         [Required]
         public DeviceStatus  Status { get; set; }

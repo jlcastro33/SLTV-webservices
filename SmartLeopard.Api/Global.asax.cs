@@ -17,6 +17,7 @@ namespace SmartLeopard.Api
         {
             //    AutofacConfig.Register();
 
+            AutoMapperConfig.Configure();
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
 

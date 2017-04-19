@@ -9,7 +9,7 @@ namespace SmartLeopard.Models
 {
     public class RegistryModel
     {
-        [Required]
+       // [Required]
         public string Mac { get; set; }
 
         [Required]

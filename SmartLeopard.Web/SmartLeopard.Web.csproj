@@ -44,6 +44,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=6.0.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.6.0.2\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.6\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
@@ -190,6 +194,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\AutoMapperConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -204,6 +209,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\CultureHelper.cs" />
+    <Compile Include="MappingProfiles\ApiModelsProfile.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -333,6 +339,14 @@
     <ProjectReference Include="..\SmartLeopard.Bll\SmartLeopard.Bll.csproj">
       <Project>{F5698E26-EDD8-4250-8DD9-2AC218A4F284}</Project>
       <Name>SmartLeopard.Bll</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SmartLeopard.Client\SmartLeopard.Client.csproj">
+      <Project>{CDD43426-B5A0-4A4D-9AD3-F337EF269806}</Project>
+      <Name>SmartLeopard.Client</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SmartLeopard.Models\SmartLeopard.Models.csproj">
+      <Project>{BDE6F2D1-B4AE-4F3F-9150-84DD72234F46}</Project>
+      <Name>SmartLeopard.Models</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

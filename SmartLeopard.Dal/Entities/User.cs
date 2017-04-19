@@ -13,6 +13,7 @@ namespace SmartLeopard.Dal.Entities
         public string Surname { get; set; }
         [Required]
         public string  Email { get; set; }
+        [Required]
         public string  Password { get; set; }
         public string ZipCode { get; set; }
         public string  CountryCode { get; set; }

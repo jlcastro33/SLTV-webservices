@@ -11,10 +11,7 @@ namespace SmartLeopard.Web.Controllers
     {
         // GET: Language
         public ActionResult Index(string cultureName)
-        {
-            Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(cultureName);
-            Thread.CurrentThread.CurrentUICulture = Thread.CurrentThread.CurrentCulture;
-
+        { 
             var cultureCookie = Request.Cookies["_culture"] ?? new HttpCookie("_culture");
             cultureCookie.Value = cultureName;
             cultureCookie.Expires = DateTime.Now.AddYears(1);

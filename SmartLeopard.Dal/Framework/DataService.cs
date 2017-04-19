@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using SmartLeopard.Dal.Helpers;
 
 namespace SmartLeopard.Dal.Framework
 { 
@@ -18,10 +19,10 @@ namespace SmartLeopard.Dal.Framework
         {
             if (entityToAdd.Id > 0)
                 return entityToAdd;
-            var entityToReturn = Repository.Add(entityToAdd);
-            entityToAdd.Created = DateTime.Now;
-            entityToAdd.Updated = DateTime.Now;
 
+            entityToAdd.ApplyCreateDefaults();
+            var entityToReturn = Repository.Add(entityToAdd);
+            
             await Repository.SaveChangesAsync();
             return entityToReturn;
         }

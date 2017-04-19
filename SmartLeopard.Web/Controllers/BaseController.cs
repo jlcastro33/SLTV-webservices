@@ -1,15 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Threading;
 using System.Web;
 using System.Web.Mvc;
+using SmartLeopard.Client;
 using SmartLeopard.Web.Helpers;
 
 namespace SmartLeopard.Web.Controllers
 {
     public class BaseController : Controller
     {
+        private Lazy<ApiHelper> ApiHelperLazy { get; } = new Lazy<ApiHelper>(() => new ApiHelper(ConfigurationManager.AppSettings["apiUrl"]));
+
+        public ApiHelper Api => ApiHelperLazy.Value;
+
         protected override IAsyncResult BeginExecuteCore(AsyncCallback callback, object state)
         {
             string cultureName;

@@ -67,13 +67,10 @@
     <Compile Include="Framework\IDataService.cs" />
     <Compile Include="Framework\IEntity.cs" />
     <Compile Include="Framework\IRepository.cs" />
-    <Compile Include="Migrations\201704101457210_Initial.cs" />
-    <Compile Include="Migrations\201704101457210_Initial.Designer.cs">
-      <DependentUpon>201704101457210_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201704101502088_tracing.cs" />
-    <Compile Include="Migrations\201704101502088_tracing.Designer.cs">
-      <DependentUpon>201704101502088_tracing.cs</DependentUpon>
+    <Compile Include="Helpers\StaticExtensions.cs" />
+    <Compile Include="Migrations\201704190607054_Initial.cs" />
+    <Compile Include="Migrations\201704190607054_Initial.Designer.cs">
+      <DependentUpon>201704190607054_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -93,11 +90,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201704101457210_Initial.resx">
-      <DependentUpon>201704101457210_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704101502088_tracing.resx">
-      <DependentUpon>201704101502088_tracing.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201704190607054_Initial.resx">
+      <DependentUpon>201704190607054_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
